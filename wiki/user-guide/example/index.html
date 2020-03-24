@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+
+
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+<meta name="generator" content="Orchid 0.17.7-SNAPSHOT"/>
+<link rel="icon" href="https://www.holunda.io/camunda-bpm-taskpool/favicon.ico">
+
+
+<meta name="robots" content="index, follow">
+
+
+
+<title>Working Example</title>
+
+
+<meta name="description" content="A component for pooling Camunda BPM user tasks with business data for high performance queries.">
+
+
+
+<link rel="prev" href="https://www.holunda.io/camunda-bpm-taskpool/wiki/user-guide/components/view-mongo">
+
+
+<link rel="next" href="https://www.holunda.io/camunda-bpm-taskpool/wiki/user-guide/scenarios">
+
+
+<script>
+    window.site = {"orchidVersion":"0.17.7-SNAPSHOT","baseUrl":"https://www.holunda.io/camunda-bpm-taskpool","environment":"debug","version":"2.0.6"};
+</script>
+
+
+
+
+
+<!-- start:debug info -->
+
+<!-- THEME -->
+<!-- Type: BsDoc -->
+<!-- Class: com.eden.orchid.bsdoc.BSDocTheme -->
+
+<!-- PAGE -->
+<!-- Type: wiki -->
+<!-- Class: com.eden.orchid.wiki.pages.WikiPage -->
+<!-- Layout: geopattern2, index -->
+<!-- Resolved Layout: templates/layouts/geopattern2.peb -->
+<!-- Page Template: wiki, page -->
+<!-- Resolved Page Template:  -->
+
+<!-- RESOURCE -->
+<!-- Class: com.eden.orchid.api.resources.resource.FileResource -->
+<!-- Source Filename: wiki/user-guide/example.ad -->
+
+<!-- COMPLETE PAGE CONFIGURATION -->
+<script>
+    window.allData = {"reference":{"path":"wiki/user-guide","baseUrl":"https://www.holunda.io/camunda-bpm-taskpool","fileName":"example","extension":"html","usePrettyUrl":true,"link":"https://www.holunda.io/camunda-bpm-taskpool/wiki/user-guide/example"},"next":{"path":"wiki/user-guide","baseUrl":"https://www.holunda.io/camunda-bpm-taskpool","fileName":"scenarios","extension":"html","usePrettyUrl":true,"link":"https://www.holunda.io/camunda-bpm-taskpool/wiki/user-guide/scenarios"},"previous":{"path":"wiki/user-guide/components","baseUrl":"https://www.holunda.io/camunda-bpm-taskpool","fileName":"view-mongo","extension":"html","usePrettyUrl":true,"link":"https://www.holunda.io/camunda-bpm-taskpool/wiki/user-guide/components/view-mongo"},"description":"","title":"Working Example"};
+</script>
+
+<!-- end:debug info -->
+
+
+
+<!-- start:inject styles -->
+<link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.0/gh-fork-ribbon.min.css" />
+<link rel="stylesheet" type="text/css" href="https://www.holunda.io/camunda-bpm-taskpool/BsDoc/68a296f7/assets/css/bsdoc.css" />
+<link rel="stylesheet" type="text/css" href="https://www.holunda.io/camunda-bpm-taskpool/BsDoc/68a296f7/assets/css/orchidSearch.css" />
+<link rel="stylesheet" type="text/css" href="https://www.holunda.io/camunda-bpm-taskpool/assets/css/menu.css" />
+<link rel="stylesheet" type="text/css" href="https://www.holunda.io/camunda-bpm-taskpool/assets/css/asciidoc-admonitionblock.css" />
+<link rel="stylesheet" type="text/css" href="https://rawgit.com/PrismJS/prism-themes/master/themes/prism-darcula.css" />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.8.4/plugins/line-numbers/prism-line-numbers.min.css" />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.8.4/plugins/line-highlight/prism-line-highlight.min.css" />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.8.4/plugins/toolbar/prism-toolbar.min.css" />
+<!-- end:inject styles -->
+
+
+</head>
+<body>
+
+
+
+
+<a class="github-fork-ribbon right-top"
+   href="https://github.com/holunda-io/camunda-bpm-taskpool"
+   title="Fork me on GitHub">Fork me on GitHub</a>
+
+
+<header class="navbar navbar-fixed-top bs-docs-nav">
+    <div class="container">
+        <div class="navbar-header" role="banner">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://www.holunda.io/camunda-bpm-taskpool">Camunda BPM Taskpool</a>
+        </div>
+        <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Introduction<span class="caret"></span></a>
+                            <ul class="dropdown-menu scrollable-menu">
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-taskpool/wiki/introduction/motivation">Motivation</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-taskpool/wiki/introduction/features">Features</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-taskpool/wiki/introduction/solution">Solution Idea</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-taskpool/wiki/introduction/further-outlook">Further outlook</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-taskpool/wiki/introduction/quick-start">Quick Start</a></li>
+                                
+                            </ul>
+                        </li>
+                    
+                
+                    
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">User Guide<span class="caret"></span></a>
+                            <ul class="dropdown-menu scrollable-menu">
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-taskpool/wiki/user-guide/components">Taskpool Components</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-taskpool/wiki/user-guide/example">Working Example</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-taskpool/wiki/user-guide/scenarios">Usage Scenarios</a></li>
+                                
+                            </ul>
+                        </li>
+                    
+                
+                    
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Developer Guide<span class="caret"></span></a>
+                            <ul class="dropdown-menu scrollable-menu">
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-taskpool/wiki/developer-guide/contribution">Contribution</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-taskpool/wiki/developer-guide/project-setup">Project Setup</a></li>
+                                
+                            </ul>
+                        </li>
+                    
+                
+                    
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Explore<span class="caret"></span></a>
+                            <ul class="dropdown-menu scrollable-menu">
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-taskpool/changelog">Changelog</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-taskpool/license">License</a></li>
+                                
+                                    <li><a href="https://www.holunda.io/camunda-bpm-taskpool/readme">Project Readme</a></li>
+                                
+                            </ul>
+                        </li>
+                    
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+<div id="top"></div>
+
+
+    <div class="bs-docs-header" id="jumbotron">
+        <div class="container">
+            <h1 class="home-title">Working Example</h1>
+        </div>
+    </div>
+
+
+<div class="container bs-docs-container">
+    <div class="row">
+        <div class="col-md-9" role="main">
+        <nav aria-label="breadcrumb">
+    <ul class="breadcrumb">
+    
+    
+        <li class="breadcrumb-item"><a href="https://www.holunda.io/camunda-bpm-taskpool/wiki">Wiki</a></li>
+    
+    
+    
+        <li class="breadcrumb-item"><a href="https://www.holunda.io/camunda-bpm-taskpool/wiki/user-guide">User Guide</a></li>
+    
+    
+    
+        <li class="breadcrumb-item active" aria-current="page">Working Example</li>
+    
+    
+    </ul>
+</nav>
+        
+
+        
+        
+            
+    <!-- start:inject components -->
+    
+        
+            
+        
+            
+                
+                    
+                        <div class="sect1">
+<h2 id="_working_example">Working Example</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Along with library modules several example modules and applications are provided, demonstrating the main features of the solution.
+This includes a series of example applications for usage in different <a href="../scenarios">Usage Scenarios</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="_business_context">Business context</h3>
+<div class="imageblock">
+<div class="content">
+<img src="https://www.holunda.io/camunda-bpm-taskpool/assets/media/process_approve_request.png" alt="Approval Process">
+</div>
+</div>
+<div class="paragraph">
+<p>Imagine a system that responsible for management of all requests in the company. Using this system, you can submit requests
+which then get eventually approved or rejected. Sometimes, the approver doesn&#8217;t approve or reject, but returns the request
+back to the originator (that is the person, who submitted the request). Then, the originator can amend the request and
+resubmit it or cancel the request.</p>
+</div>
+<div class="paragraph">
+<p>The request is initially crated in <code>DRAFT</code> mode. It gets to state <code>IN PROGRESS</code> as soon as the process is started and will
+eventually get to <code>ACCEPTED</code> or <code>REJECTED</code> as a final state.</p>
+</div>
+<div class="paragraph">
+<p>For sample purposes two groups of users are created: The Muppet Show (Kermit, Piggy, Gonzo and Fozzy) and The Avengers (Ironman,
+Hulk). Gonzo and Fozzy are responsible for approvals.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_story_board">Story board</h3>
+<div class="paragraph">
+<p>The following storyboard can be used to understand the mechanics behind the provided implementation:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>To start the <code>Approval process</code> for a given request open your browser and navigate to the <code>Tasklist</code>:
+<a href="http://localhost:8081/tasklist/">http://localhost:8081/tasklist/</a>. Please note that the selected user is <code>Ironman</code>.
+Open the menu (Start new&#8230;&#8203;) in the top-left corner and select 'Approval Request'. You should see the start
+form for the example approval process.</p>
+</li>
+<li>
+<p>Select from one of predefined templates and click <em>Start</em>. The start form will disappear and redirect back to
+the <code>Tasklist</code> where the new approval request process created one task with the name <em>Approve Request</em>. If the selected
+user is still <code>Ironman</code> you won&#8217;t see any task, but it will be visible if you switch to <code>Gonzo</code>.</p>
+</li>
+<li>
+<p>Examine the task details by clicking <em>Data</em> tab in <em>Details</em> column. You can see the data of the request correlated to
+the current process instance.</p>
+</li>
+<li>
+<p>Switch to <code>Archive</code> and you should see the request business object. Examine the approval request by clicking
+<em>Data</em>, <em>Audit</em> and <em>Description</em> tabs in <em>Details</em> column.</p>
+</li>
+<li>
+<p>Let&#8217;s assume the request amount is too high and we want to inform <code>Ironman</code> about this. We are not rejecting the
+request completely, but returning it to back to <code>Ironman</code>. To do so click on the task name which opens the user task
+form <em>Approve Request</em> and complete the task, by selecting the <em>Return request to originator</em> option and clicking
+the <em>Complete</em> button. The process will create a new user task <code>Amend Request</code> for the originator, who is
+<code>Ironman</code> which is visible in the <code>Tasklist</code>.</p>
+</li>
+<li>
+<p><code>Ironman</code> should now change the amount of the request in the and re-submit the request. For doing so, click
+on task named <em>Amend Approval Request</em>, change the amount to a new value and complete the task by selecting the
+<em>Re-submit request</em> option and clicking on <em>Complete</em> button.</p>
+</li>
+<li>
+<p>Again, let&#8217;s examine the data correlated with the task. Note that the amount is changed, despite the fact that the
+request amount is not a data item available to the process instance but is still available in the <code>Tasklist</code>. You can
+examine the details of the <code>Approval Request</code> in the <code>Archive</code> again.</p>
+</li>
+<li>
+<p>Switch back to the <code>Tasklist</code> and approve the request by selecting the appropriate option.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_running_examples">Running Examples</h3>
+<div class="paragraph">
+<p>To run the example please consult the <a href="../scenarios">Usage Scenarios</a> section.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+Since the process application includes Camunda BPM engine, you can use the standard Camunda webapps by navigating to [<a href="http://localhost:8080/" class="bare">http://localhost:8080/</a>](<a href="http://localhost:8080/" class="bare">http://localhost:8080/</a>).
+The default user and password are `admin / admin `.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_tasklist">Tasklist</h3>
+<div class="paragraph">
+<p>The currently implemented <code>Tasklist</code> is a simple application (implemented as a single-page-application based on Angular)
+that shows the list of taks available in the task pool. In doing so it provides the ability to filter, sort and page
+tasks with correlated business events. Here is how it looks like now:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://www.holunda.io/camunda-bpm-taskpool/assets/media/tasklist-angular-classic.png" alt="Angualar Tasklist, classic representation of tasks">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://www.holunda.io/camunda-bpm-taskpool/assets/media/tasklist-angular-data.png" alt="Angualar Tasklist, representation of tasks with correlated data">
+</div>
+</div>
+<div class="sect3">
+<h4 id="_features">Features</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Lists tasks in the system for selected user</p>
+</li>
+<li>
+<p>Allows for switching users</p>
+</li>
+<li>
+<p>Tasks include information about the process, name, description, create time, due date, priority and assignment.</p>
+</li>
+<li>
+<p>Tasks include process data (from process instance)</p>
+</li>
+<li>
+<p>Tasks include correlated business data</p>
+</li>
+<li>
+<p>The list of tasks is sortable</p>
+</li>
+<li>
+<p>The list of tasks is paged (7 items per page)</p>
+</li>
+<li>
+<p>Claiming / Unclaiming</p>
+</li>
+<li>
+<p>Jump to form</p>
+</li>
+<li>
+<p>Allows to start processes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_ongoing_todo">Ongoing / TODO</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Filtering</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_archive_list">Archive list</h3>
+<div class="sect3">
+<h4 id="_features_2">Features</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Lists business object in the system for selected user</p>
+</li>
+<li>
+<p>Allows for switching users</p>
+</li>
+<li>
+<p>Business objects include information about the type, status (with sub status), name, details</p>
+</li>
+<li>
+<p>Business objects include details about contained data</p>
+</li>
+<li>
+<p>Business objects include audit log with all state changes</p>
+</li>
+<li>
+<p>The list is paged (7 items per page)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_ongoing_todo_2">Ongoing / TODO</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Business object view</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+                    
+                
+            
+        
+    
+    <!-- end:inject components -->
+
+
+        
+        </div>
+
+        <!-- Page navigation
+        =========================================== -->
+        <div class="col-md-3" role="complementary">
+        <div class="bs-docs-sidebar hidden-print" id="bs-docs-sidebar">
+    
+        <section id="search" >
+            <form data-orchid-search="">
+                <div class="input-group">
+                    <input type="text" name="query" id="query" class="form-control" placeholder="Search&hellip;">
+                    <span class="input-group-btn"><button type="submit" class="btn btn-default">Go</button></span>
+                </div>
+            </form>
+            <div id="search-results" data-orchid-search-results style="display: none;">
+                <b>Search Results</b>
+                <ul></ul>
+            </div>
+            <div id="search-progress" data-orchid-search-progress style="display: none;">
+                <div class="loader">Loading...</div>
+            </div>
+        </section>
+    
+
+    <ul class="nav bs-docs-sidenav">
+        
+        
+            
+                
+                    <li><a class="divider-subheader">In This Page</a></li>
+                
+            
+        
+        
+            
+                <li class="has-children ">
+                    <a>Working Example</a>
+                    <ul class="nav">
+                        
+                        
+                            
+                                <li class="">
+                                    <a href="#_business_context">Business context</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#_story_board">Story board</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#_running_examples">Running Examples</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#_tasklist">Tasklist</a>
+                                </li>
+                            
+                        
+                            
+                                <li class="">
+                                    <a href="#_archive_list">Archive list</a>
+                                </li>
+                            
+                        
+                    </ul>
+                </li>
+            
+        
+        
+            
+                
+                    <li><a class="divider-subheader">User Guide</a></li>
+                
+            
+        
+    </ul>
+
+    
+    <!-- start:inject components -->
+    
+    <!-- end:inject components -->
+
+
+
+    <a class="back-to-top" href="#top">
+        <i class="glyphicon glyphicon-chevron-up"></i> Back to top
+    </a>
+</div>
+
+        </div>
+    </div>
+</div>
+
+
+<div id="footer">
+    <div class="container bs-docs-container">
+    <footer class="bs-docs-footer" role="contentinfo">
+    <div class="row">
+        <div class="col-xs-12">
+            <nav aria-label="navigateClasses">
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="https://www.holunda.io/camunda-bpm-taskpool/wiki/user-guide/components/view-mongo">
+                                <span aria-hidden="true">&larr;</span>
+                                <span>Mongo View</span>
+                            </a>
+                        </li>
+                    
+
+                    
+                        <li class="next">
+                            <a href="https://www.holunda.io/camunda-bpm-taskpool/wiki/user-guide/scenarios">
+                                <span>Usage Scenarios</span>
+                                <span aria-hidden="true">&rarr;</span>
+                            </a>
+                        </li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="icons">
+    
+    
+        <a href="https://www.holunda.io/camunda-bpm-taskpool/" class="fa fas fa-home"></a>
+    
+        <a href="https://github.com/holunda-io/camunda-bpm-taskpool" class="fa fa-github"></a>
+    
+        <a href="https://twitter.com/holisticon" class="fa fa-twitter"></a>
+    
+    
+    </div>
+    <br>
+    <p>
+    Documentation template based on the
+    <a href="https://github.com/mistic100/jekyll-bootstrap-doc">Jekyll Bootstrap Doc</a>
+    Jekyll theme by the <a href="https://getbootstrap.com">Bootstrap team</a>. Site created with
+    <a href="https://orchid.netlify.com">Orchid</a>.
+</p>
+
+</footer>
+    </div>
+</div>
+
+
+<!-- start:inject scripts -->
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://netdna.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.3.0/bootbox.min.js"></script>
+<script  src="https://www.holunda.io/camunda-bpm-taskpool/BsDoc/68a296f7/assets/js/bsdoc.js"></script>
+<script  src="https://unpkg.com/lunr/lunr.js"></script>
+<script  src="https://www.holunda.io/camunda-bpm-taskpool/BsDoc/68a296f7/assets/js/orchidSearch.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.8.4/prism.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.8.4/components/prism-yaml.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.8.4/components/prism-java.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.8.4/components/prism-json.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.8.4/components/prism-kotlin.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.8.4/components/prism-markdown.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.8.4/plugins/line-numbers/prism-line-numbers.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.8.4/plugins/line-highlight/prism-line-highlight.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.8.4/plugins/toolbar/prism-toolbar.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.8.4/plugins/show-language/prism-show-language.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.8.4/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+<!-- end:inject scripts -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+
+<script>
+    $(function () {
+        window.colors = ['#B10000', '#000000'];
+                  
+    
+        geopattern('Working Example');
+    
+
+        buildNav();
+    });
+</script>
+
+</body>
+</html>

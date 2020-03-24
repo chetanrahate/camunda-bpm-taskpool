@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd"
+    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <sitemap>
+        <loc>https://www.holunda.io/camunda-bpm-taskpool/sitemap-home.xml</loc>
+        <lastmod>2020-03-24</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://www.holunda.io/camunda-bpm-taskpool/sitemap-kotlindoc.xml</loc>
+        <lastmod>2020-03-24</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://www.holunda.io/camunda-bpm-taskpool/sitemap-pages.xml</loc>
+        <lastmod>2020-03-24</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://www.holunda.io/camunda-bpm-taskpool/sitemap-wiki.xml</loc>
+        <lastmod>2020-03-24</lastmod>
+    </sitemap>
+    
+</sitemapindex>
